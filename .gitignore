@@ -52,8 +52,9 @@ output/*.log
 # models/*.h5
 
 # Output files (generated during runtime)
-output/processed_data.csv
-output/feature_data.csv
+# Note: Committing these for Streamlit Cloud deployment
+# output/processed_data.csv
+# output/feature_data.csv
 output/honeypot_intelligence.log
 
 # Streamlit (keep config for deployment, ignore secrets)
