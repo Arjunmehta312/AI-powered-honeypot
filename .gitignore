@@ -56,8 +56,8 @@ output/processed_data.csv
 output/feature_data.csv
 output/honeypot_intelligence.log
 
-# Streamlit
-.streamlit/
+# Streamlit (keep config for deployment, ignore secrets)
+.streamlit/secrets.toml
 
 # OS specific
 Thumbs.db
