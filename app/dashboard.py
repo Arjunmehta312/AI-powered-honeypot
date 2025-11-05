@@ -79,8 +79,25 @@ def load_data():
         df['timestamp'] = pd.to_datetime(df['timestamp'])
         return df
     except FileNotFoundError:
-        st.error("Processed data not found. Please run preprocessing first.")
-        return None
+        # Fallback: Try to run preprocessing on-the-fly
+        st.warning("Running preprocessing pipeline... This may take a moment.")
+        try:
+            from preprocess import main as preprocess_main
+            preprocess_main()
+            df = pd.read_csv(PROCESSED_DATA_FILE)
+            df['timestamp'] = pd.to_datetime(df['timestamp'])
+            return df
+        except Exception as e:
+            st.error(f"Preprocessing failed: {e}")
+            # Last resort: Load raw dataset directly
+            try:
+                dataset_path = Path(__file__).parent.parent / 'dataset' / 'london.csv'
+                df = pd.read_csv(dataset_path)
+                df['timestamp'] = pd.to_datetime(df['Timestamp'])
+                return df
+            except Exception as e2:
+                st.error(f"Could not load data: {e2}")
+                return None
 
 
 @st.cache_data
@@ -91,8 +108,17 @@ def load_feature_data():
         df['timestamp'] = pd.to_datetime(df['timestamp'])
         return df
     except FileNotFoundError:
-        st.error("Feature data not found. Please run feature engineering first.")
-        return None
+        # Fallback: Try to run feature engineering
+        st.warning("Running feature engineering... This may take a moment.")
+        try:
+            from feature_engineer import main as feature_main
+            feature_main()
+            df = pd.read_csv(FEATURES_FILE)
+            df['timestamp'] = pd.to_datetime(df['timestamp'])
+            return df
+        except Exception as e:
+            st.error(f"Feature engineering failed: {e}")
+            return None
 
 
 @st.cache_resource
