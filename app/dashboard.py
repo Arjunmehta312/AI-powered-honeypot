@@ -141,7 +141,7 @@ def plot_attack_timeline(df):
     st.subheader("Attack Timeline")
     
     # Group by hour
-    timeline = df.groupby(df['timestamp'].dt.floor('H')).size().reset_index()
+    timeline = df.groupby(df['timestamp'].dt.floor('h')).size().reset_index()
     timeline.columns = ['timestamp', 'count']
     
     fig = px.line(timeline, x='timestamp', y='count',
@@ -149,7 +149,7 @@ def plot_attack_timeline(df):
                   labels={'timestamp': 'Time', 'count': 'Number of Attacks'})
     fig.update_layout(height=400)
     
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 
 def plot_attack_distribution(df):
@@ -165,7 +165,7 @@ def plot_attack_distribution(df):
                      title='Top 10 Protocol Types',
                      labels={'x': 'Protocol', 'y': 'Count'})
         fig.update_layout(height=400)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
     
     with col2:
         # Attack type pie chart
@@ -174,7 +174,7 @@ def plot_attack_distribution(df):
             fig = px.pie(values=attack_counts.values, names=attack_counts.index,
                         title='Attack Type Distribution')
             fig.update_layout(height=400)
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
 
 def plot_temporal_analysis(df):
@@ -190,7 +190,7 @@ def plot_temporal_analysis(df):
                      title='Attacks by Hour of Day',
                      labels={'x': 'Hour', 'y': 'Count'})
         fig.update_layout(height=400)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
     
     with col2:
         # Attacks by day of week
@@ -200,7 +200,7 @@ def plot_temporal_analysis(df):
                      title='Attacks by Day of Week',
                      labels={'x': 'Day', 'y': 'Count'})
         fig.update_layout(height=400)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
 
 def plot_top_attackers(df):
@@ -214,7 +214,7 @@ def plot_top_attackers(df):
                  labels={'x': 'Number of Attacks', 'y': 'IP Address'})
     fig.update_layout(height=500)
     
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 
 def plot_port_analysis(df):
@@ -230,7 +230,7 @@ def plot_port_analysis(df):
                      title='Top 15 Targeted Ports',
                      labels={'x': 'Port', 'y': 'Count'})
         fig.update_layout(height=400)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
     
     with col2:
         # Port category distribution
@@ -239,7 +239,7 @@ def plot_port_analysis(df):
             fig = px.pie(values=port_cat_counts.values, names=port_cat_counts.index,
                         title='Port Category Distribution')
             fig.update_layout(height=400)
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
 
 def plot_severity_analysis(df):
@@ -261,7 +261,7 @@ def plot_severity_analysis(df):
             marker=dict(colors=[colors.get(s, '#1f77b4') for s in severity_counts.index])
         )])
         fig.update_layout(title='Threat Severity Distribution', height=400)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
     
     with col2:
         # Severity by attack type
@@ -270,7 +270,7 @@ def plot_severity_analysis(df):
             fig = px.bar(severity_attack, barmode='stack',
                         title='Severity by Attack Type')
             fig.update_layout(height=400)
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
 
 def display_threat_intelligence(df):
@@ -298,8 +298,8 @@ def display_threat_intelligence(df):
             else:
                 return 'background-color: #d4edda'
         
-        styled_df = ip_threat.style.applymap(risk_color, subset=['Reputation Score'])
-        st.dataframe(styled_df, use_container_width=True)
+        styled_df = ip_threat.style.map(risk_color, subset=['Reputation Score'])
+        st.dataframe(styled_df, width="stretch")
 
 
 def display_model_predictions(df, models):
@@ -352,7 +352,7 @@ def display_analytics(df):
             payload_dist = df['payload_type'].value_counts()
             fig = px.pie(values=payload_dist.values, names=payload_dist.index,
                         title='Payload Type Distribution')
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
     
     with col2:
         # IP frequency distribution
@@ -364,7 +364,7 @@ def display_analytics(df):
             fig = px.bar(x=freq_dist.index, y=freq_dist.values,
                         title='IP Attack Frequency Distribution',
                         labels={'x': 'Attacks per IP', 'y': 'Count'})
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
 
 def main():
