@@ -1,0 +1,205 @@
+% AI-Powered Honeypot Intelligence System - Project Summary
+% Professional One-Page Document
+
+\documentclass[11pt,a4paper]{article}
+
+% Packages
+\usepackage[margin=0.6in]{geometry}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{tcolorbox}
+
+% Colors
+\definecolor{primaryblue}{RGB}{31,119,180}
+\definecolor{darkgray}{RGB}{64,64,64}
+\definecolor{lightgray}{RGB}{240,240,240}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primaryblue,
+    urlcolor=primaryblue,
+    citecolor=primaryblue
+}
+
+% Custom commands
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+\begin{document}
+
+% Header
+\begin{tcolorbox}[colback=primaryblue,colframe=primaryblue,arc=2mm,boxrule=0pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\color{white}
+\begin{center}
+{\Huge \textbf{AI-Powered Honeypot Intelligence System}} \\[2mm]
+{\large Cybersecurity Threat Analysis with Machine Learning} \\[1mm]
+{\footnotesize AI/ML Course Project --- Batch 2027}
+\end{center}
+\end{tcolorbox}
+
+\vspace{2mm}
+
+% Two-column layout
+\begin{multicols}{2}
+
+% Section 1: Overview
+\section*{\colorbox{lightgray}{\parbox{\linewidth}{\textbf{1. Project Overview}}}}
+
+This project implements an intelligent honeypot analysis system that automatically detects, classifies, and analyzes cyber attacks using machine learning. It processes real-world attack data from AWS EC2 honeypots deployed in London, achieving \textbf{99.99--100\% accuracy} in threat classification.
+
+\textbf{Key Capabilities:}
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=2pt]
+    \item Real-time attack classification (8 attack types)
+    \item Threat severity scoring (Low/Medium/High)
+    \item Protocol identification (10+ network protocols)
+    \item Geographic attack mapping and visualization
+    \item Behavioral pattern analysis
+    \item Interactive web-based dashboard
+\end{itemize}
+
+% Section 2: Dataset
+\section*{\colorbox{lightgray}{\parbox{\linewidth}{\textbf{2. Dataset \& Statistics}}}}
+
+\textbf{Source:} AWS EC2 Honeypot --- London Region \\
+\textbf{Collection Period:} May 1--5, 2021 (5 days) \\
+\textbf{Total Records:} 70,327 attack attempts \\
+\textbf{Unique Attackers:} 3,508 IP addresses \\
+\textbf{Unique Ports:} 30,337 targeted ports
+
+\textbf{Attack Type Distribution:}
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=2pt]
+    \item HTTP Exploits: 23.1\% (16,272 records)
+    \item TLS/SSL Attacks: 16.1\% (11,344 records)
+    \item RDP Attacks: 15.2\% (10,721 records)
+    \item Port Scans: 9.3\% (6,571 records)
+    \item SMB Attacks: 4.8\% (3,368 records)
+    \item SSH Brute Force: 1.3\% (947 records)
+    \item Database Attacks: 0.8\% (536 records)
+    \item Unknown: 29.2\% (20,568 records)
+\end{itemize}
+
+% Section 3: Technical Architecture
+\section*{\colorbox{lightgray}{\parbox{\linewidth}{\textbf{3. Technical Architecture}}}}
+
+\textbf{Data Processing Pipeline:}
+\begin{enumerate}[leftmargin=*,itemsep=0pt,topsep=2pt]
+    \item \textbf{Data Preprocessing:} Cleaning, deduplication, timestamp parsing, protocol identification
+    \item \textbf{Feature Engineering:} 19 behavioral features extracted including payload analysis, frequency patterns, temporal features
+    \item \textbf{Model Training:} 4 ML models trained using Random Forest and XGBoost algorithms
+    \item \textbf{Deployment:} Interactive Streamlit dashboard with real-time predictions
+\end{enumerate}
+
+\textbf{Machine Learning Models:}
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=2pt]
+    \item \textbf{Random Forest Attack Classifier:} 99.99\% accuracy
+    \item \textbf{XGBoost Attack Classifier:} 100\% accuracy
+    \item \textbf{Random Forest Threat Scorer:} 99.99\% accuracy
+    \item \textbf{XGBoost Threat Scorer:} 100\% accuracy
+\end{itemize}
+
+% Section 4: Engineered Features
+\section*{\colorbox{lightgray}{\parbox{\linewidth}{\textbf{4. Feature Engineering (19 Features)}}}}
+
+\textbf{Payload Features:} Length, malicious keyword detection, type encoding
+
+\textbf{Temporal Features:} Hour, day of week, weekend flag, night flag, time since previous attack, attacks per hour
+
+\textbf{Network Features:} Port number, protocol type, port category, IP frequency, port frequency
+
+\textbf{Interaction Features:} Port-hour combinations, IP frequency-payload interactions, weekend-night patterns
+
+\textbf{Reputation Features:} IP reputation scores based on attack history
+
+% Section 5: Dashboard Features
+\section*{\colorbox{lightgray}{\parbox{\linewidth}{\textbf{5. Dashboard Capabilities}}}}
+
+\textbf{Six Interactive Analysis Sections:}
+\begin{enumerate}[leftmargin=*,itemsep=0pt,topsep=2pt]
+    \item \textbf{Overview:} Key metrics, attack timeline, geographic heatmap, top attackers
+    \item \textbf{Attack Analysis:} Attack type distribution, payload analysis, severity breakdown
+    \item \textbf{Temporal Patterns:} Hourly trends, daily patterns, weekend vs. weekday analysis
+    \item \textbf{Threat Intelligence:} Top malicious IPs, port targeting, protocol usage
+    \item \textbf{ML Predictions:} Real-time attack classification, threat scoring, confidence metrics
+    \item \textbf{Advanced Analytics:} Correlation matrices, feature importance, clustering analysis
+\end{enumerate}
+
+% Section 6: Technologies
+\section*{\colorbox{lightgray}{\parbox{\linewidth}{\textbf{6. Technology Stack}}}}
+
+\textbf{Core Technologies:}
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=2pt]
+    \item \textbf{Language:} Python 3.9+
+    \item \textbf{Data Processing:} Pandas, NumPy
+    \item \textbf{Machine Learning:} Scikit-learn, XGBoost
+    \item \textbf{Visualization:} Plotly, Matplotlib, Seaborn
+    \item \textbf{Dashboard:} Streamlit
+    \item \textbf{Deployment:} Streamlit Community Cloud (Free)
+    \item \textbf{Version Control:} Git (30+ commits)
+\end{itemize}
+
+% Section 7: How It Works
+\section*{\colorbox{lightgray}{\parbox{\linewidth}{\textbf{7. System Workflow}}}}
+
+\textbf{Step 1: Data Ingestion} \\
+Raw honeypot logs are loaded from CSV format containing timestamps, source IPs, ports, payloads, and geographic data.
+
+\textbf{Step 2: Preprocessing} \\
+Data is cleaned, duplicates removed, missing values handled, timestamps parsed, and protocols identified using signature matching.
+
+\textbf{Step 3: Feature Extraction} \\
+Behavioral features are engineered including payload characteristics, temporal patterns, network metrics, and IP reputation scores.
+
+\textbf{Step 4: Attack Classification} \\
+ML models predict attack types based on 19 engineered features, outputting classification with confidence scores.
+
+\textbf{Step 5: Threat Scoring} \\
+Separate models assign severity levels (Low/Medium/High) based on attack characteristics and historical patterns.
+
+\textbf{Step 6: Visualization} \\
+Results are displayed in interactive dashboard with filtering, drill-down capabilities, and real-time prediction interface.
+
+% Section 8: Results
+\section*{\colorbox{lightgray}{\parbox{\linewidth}{\textbf{8. Key Results \& Achievements}}}}
+
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=2pt]
+    \item \textbf{100\% accuracy} in attack classification (XGBoost)
+    \item \textbf{70,327 attacks} successfully analyzed
+    \item \textbf{10 protocols} automatically identified
+    \item \textbf{85.5\% attacks} classified as HIGH severity
+    \item \textbf{Real-time processing} of new attack data
+    \item \textbf{Production deployment} on free cloud platform
+    \item \textbf{Comprehensive documentation} with best practices
+\end{itemize}
+
+% Section 9: Use Cases
+\section*{\colorbox{lightgray}{\parbox{\linewidth}{\textbf{9. Practical Applications}}}}
+
+\textbf{Security Operations:} Automated threat detection and prioritization for SOC teams
+
+\textbf{Research:} Analysis of attack patterns and emerging threat vectors
+
+\textbf{Education:} Hands-on learning for cybersecurity and ML students
+
+\textbf{Incident Response:} Quick classification of security incidents for faster response
+
+\textbf{Threat Intelligence:} Identification of malicious IPs and attack campaigns
+
+\end{multicols}
+
+% Footer Section
+\vspace{1mm}
+\begin{tcolorbox}[colback=lightgray,colframe=darkgray,arc=2mm,boxrule=0.5pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{Live Deployment:} \href{https://ai-powered-honeypot-for-aiml-course-batch2027.streamlit.app/}{https://ai-powered-honeypot-for-aiml-course-batch2027.streamlit.app/} \\[1mm]
+\textbf{GitHub Repository:} \href{https://github.com/Arjunmehta312/AI-powered-honeypot}{github.com/Arjunmehta312/AI-powered-honeypot} \\[1mm]
+\textbf{License:} MIT --- Open Source \\[1mm]
+\textbf{Project Status:} \textcolor{green}{\textbf{Production Ready}} --- Fully functional with 99.99--100\% model accuracy, comprehensive documentation, and free cloud deployment.
+\end{tcolorbox}
+
+\end{document}
